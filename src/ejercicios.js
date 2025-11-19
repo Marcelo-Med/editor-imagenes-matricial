@@ -206,8 +206,17 @@ function obtenerDimensionesImagen(rutaImagen) {
   
   // Pista: Puedes cargar la imagen y usar obtenerDimensiones()
   // o leer solo el header del PNG
+
+  // Leer solo el PNG con sync.read (no genera matriz ni recorre pixeles)
+  const buffer = fs.readFileSync(rutaImagen);
+  const png = PNG.sync.read(buffer); // extrae width/height del header
   
-  return { ancho: 0, alto: 0, totalPixeles: 0 }; // REEMPLAZAR
+  // Construir el objeto resultado
+  const ancho = png.width;
+  const alto = png.height;
+  const totalPixeles = ancho * alto;
+  
+  return { ancho, alto, totalPixeles }; // REEMPLAZAR
 }
 
 // ============================================
