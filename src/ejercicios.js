@@ -1,9 +1,9 @@
 // ============================================
 // EDITOR DE IMÁGENES CON ÁLGEBRA MATRICIAL
 // ============================================
-// Nombre del estudiante: _________________
-// Fecha: _________________
-// Grupo: _________________
+// Nombre del estudiante: _Marcelo Medina Canto________________
+// Fecha: _16/11/25________________
+// Grupo: ____1-B_____________
 
 const { PNG } = require('pngjs');
 const fs = require('fs');
