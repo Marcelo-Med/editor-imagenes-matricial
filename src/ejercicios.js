@@ -491,18 +491,46 @@ function mezclarImagenes(matriz1, matriz2, factor) {
   // TODO: Implementar mezcla de imágenes
   
   // 1. Verificar que tengan las mismas dimensiones
+  const filas1 = matriz1.length;
+  const columnas1 = matriz1[0].length;
+  const filas2 = matriz2.length;
+  const columnas2 = matriz2[0].length;
+
   // const dims1 = obtenerDimensiones(matriz1);
   // const dims2 = obtenerDimensiones(matriz2);
   // if (dims1.filas !== dims2.filas || dims1.columnas !== dims2.columnas) {
   //   throw new Error('Las imágenes deben tener el mismo tamaño');
   // }
-  
+
+  if (filas1 !== filas2 || columnas1 !== columnas2) {
+    throw new Error('Las imágenes deben tener el mismo tamaño');
+  }
+
+  // Crear matriz resultado
+  const resultado = Array.from({ length: filas1 }, () =>
+    Array.from({ length: columnas1 }, () => null)
+  );
+
   // 2. Para cada pixel:
   // r = r1 * (1 - factor) + r2 * factor
   // g = g1 * (1 - factor) + g2 * factor
   // b = b1 * (1 - factor) + b2 * factor
+
+  for (let i = 0; i < filas1; i++) {
+    for (let j = 0; j < columnas1; j++) {
+      const p1 = matriz1[i][j];
+      const p2 = matriz2[i][j];
+
+      resultado[i][j] = {
+        r: Math.round(p1.r * (1 - factor) + p2.r * factor),
+        g: Math.round(p1.g * (1 - factor) + p2.g * factor),
+        b: Math.round(p1.b * (1 - factor) + p2.b * factor),
+        a: Math.round(p1.a * (1 - factor) + p2.a * factor) // alpha también se mezcla
+      };
+    }
+  }
   
-  return []; // REEMPLAZAR
+  return resultado; // REEMPLAZAR
 }
 
 /**
