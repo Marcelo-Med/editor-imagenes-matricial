@@ -409,8 +409,17 @@ function voltearHorizontal(matriz) {
 function voltearVertical(matriz) {
   // TODO: Implementar volteo vertical
   
-  return []; // REEMPLAZAR
+  // Crear copia profunda de la matriz
+  const resultado = matriz.map(fila =>
+    fila.map(pixel => ({ ...pixel }))
+  );
+
+  // Invertir el orden de las filas
+  resultado.reverse();
+
+  return resultado; // REEMPLAZAR
 }
+
 
 /**
  * Ejercicio 3.3: Rotar 90 grados en sentido horario (10 puntos)
