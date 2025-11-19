@@ -286,9 +286,27 @@ function ajustarBrillo(matriz, factor) {
 function invertirColores(matriz) {
   // TODO: Implementar inversión de colores
   
-  return []; // REEMPLAZAR
-}
+  // Crear copia profunda de la matriz
+  const resultado = matriz.map(fila =>
+    fila.map(pixel => ({ ...pixel }))
+  );
+  
+  // Invertir cada canal por la fórmula: nuevo = 255 - original
+  for (let y = 0; y < resultado.length; y++) {
+    for (let x = 0; x < resultado[y].length; x++) {
+      const p = matriz[y][x];
 
+      resultado[y][x].r = 255 - p.r;
+      resultado[y][x].g = 255 - p.g;
+      resultado[y][x].b = 255 - p.b;
+
+      // El canal alpha NO se invierte (permanece igual)
+      // resultado[y][x].a = p.a;
+    }
+  }
+  
+  return resultado; // REEMPLAZAR
+}
 /**
  * Ejercicio 2.3: Convertir a escala de grises (9 puntos)
  * 
