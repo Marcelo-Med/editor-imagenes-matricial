@@ -1,6 +1,6 @@
 // ============================================
 // EDITOR DE IMÁGENES CON ÁLGEBRA MATRICIAL
-// ============================================
+// ===========================================
 // Nombre del estudiante: _Marcelo Medina Canto_
 // Fecha: _16/11/25_
 // Grupo: _1-B_
